@@ -1,0 +1,15 @@
+version: 3.0
+
+services:
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=patate
+      - MYSQL_DATABASE=postfix
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
