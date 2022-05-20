@@ -28,7 +28,7 @@ public class MailboxService : IMailboxService
         return (await _mailboxRepository.GetMailboxByNameAndDomain(mailbox, domainId)) != null;
     }
 
-    public async Task<MailBox?> Update(MailBox mailBox)
+    public async Task<MailBox> Update(MailBox mailBox)
     {
         return await _mailboxRepository.Update(mailBox);
     }

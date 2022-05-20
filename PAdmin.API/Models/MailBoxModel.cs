@@ -19,6 +19,10 @@ public class MailBoxModel : RefModel
         Name = mailBox.Name;
         DomainId = mailBox.DomainId;
         Quota = mailBox.Quota;
-        Refs.Add("domain", url.Action("GetById", "Domain", mailBox.DomainId)!);
+        Refs = new Dictionary<string, string>
+        {
+            {"domain", url.Action("GetById", "Domain", new { id = mailBox.DomainId}) ?? String.Empty},
+            {"self", url.Action("GetSpecific", "Mailbox", new { id = mailBox.MailBoxId}) ?? String.Empty}
+        };
     }
 }

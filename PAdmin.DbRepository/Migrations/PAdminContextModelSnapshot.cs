@@ -43,7 +43,7 @@ namespace PAdmin.DbRepository.Migrations
 
                     b.HasIndex("DomainId");
 
-                    b.ToTable("Aliases");
+                    b.ToTable("Aliases", (string)null);
                 });
 
             modelBuilder.Entity("PAdmin.Entity.Domain", b =>
@@ -69,7 +69,7 @@ namespace PAdmin.DbRepository.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Domains");
+                    b.ToTable("Domains", (string)null);
                 });
 
             modelBuilder.Entity("PAdmin.Entity.DomainAlias", b =>
@@ -92,7 +92,7 @@ namespace PAdmin.DbRepository.Migrations
 
                     b.HasIndex("DomainId");
 
-                    b.ToTable("DomainAliases");
+                    b.ToTable("DomainAliases", (string)null);
                 });
 
             modelBuilder.Entity("PAdmin.Entity.MailBox", b =>
@@ -115,7 +115,7 @@ namespace PAdmin.DbRepository.Migrations
 
                     b.HasIndex("DomainId");
 
-                    b.ToTable("MailBoxes");
+                    b.ToTable("MailBoxes", (string)null);
                 });
 
             modelBuilder.Entity("PAdmin.Entity.User", b =>
@@ -156,7 +156,7 @@ namespace PAdmin.DbRepository.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("PAdmin.Entity.Alias", b =>

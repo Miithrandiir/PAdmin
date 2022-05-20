@@ -1,8 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace PAdmin.API.Forms;
 
 public class MailboxForm
 {
-    public string Name { get; set; } = "";
-    public int DomainId { get; set; }
-    public int Quota { get; set; }
+    [Required, MaxLength(30)] public string Name { get; set; } = "";
+
+    [Required] public int DomainId { get; set; } = 0;
+
+    public int Quota { get; set; } = 0;
 }

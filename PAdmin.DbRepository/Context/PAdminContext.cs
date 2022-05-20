@@ -29,7 +29,7 @@ public class PAdminContext : DbContext
         modelBuilder.Entity<Domain>(x =>
         {
             x.HasKey(y => y.DomainId);
-            x.HasOne(x => x.User).WithMany(x => x.Domains).HasForeignKey(w => w.UserId);
+            x.HasOne(y => y.User).WithMany(y => y.Domains).HasForeignKey(w => w.UserId);
         });
 
         modelBuilder.Entity<MailBox>(x =>
