@@ -7,7 +7,7 @@ public class Alias
     public string From { get; set; } = "";
     public string To { get; set; } = "";
 
-    public Domain Domain { get; set; } = new Domain();
+    public Domain Domain { get; set; } = null!;
     public int DomainId { get; set; }
     
     public DateTime CreationDate { get; set; }

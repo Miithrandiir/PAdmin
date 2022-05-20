@@ -11,5 +11,6 @@ public static class RegisterServices
         service.AddScoped<IPasswordHashService, PasswordHashService>();
         service.AddScoped<IUserService, UserService>();
         service.AddScoped<IDomainService, DomainService>();
+        service.AddScoped<IMailboxService, MailboxService>();
     }
 }
