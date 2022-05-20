@@ -20,7 +20,7 @@ public class UserModel
 
     public string LastIp { get; set; } = "";
 
-    public string Token { get; set; } = "";
+    public string? Token { get; set; } = "";
 
     public UserModel(User user, string jwt)
     {

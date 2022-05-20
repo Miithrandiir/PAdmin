@@ -32,17 +32,27 @@ public class UserRepository : IUserRepository
         return user;
     }
 
-    public async Task<User?> Insert(User user)
+    public async Task<User> Insert(User user)
     {
         await _ctx.Users.AddAsync(user);
         await _ctx.SaveChangesAsync();
         return user;
     }
 
-    public async Task<User?> Update(User user)
+    public async Task<User> Update(User user)
     {
         _ctx.Users.Update(user);
         await _ctx.SaveChangesAsync();
         return user;
+    }
+
+    public async Task Delete(int id)
+    {
+        var user = await Get(id);
+        if (user == null)
+            return;
+
+        _ctx.Users.Remove(user);
+        await _ctx.SaveChangesAsync();
     }
 }
