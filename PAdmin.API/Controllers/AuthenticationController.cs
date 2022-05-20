@@ -14,28 +14,30 @@ public class AuthenticationController : Controller
     private readonly IAuthService _authService;
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHashService _passwordHashService;
-    public AuthenticationController(IAuthService authService, IUserRepository userRepository, IPasswordHashService passwordHashService)
+
+    public AuthenticationController(IAuthService authService, IUserRepository userRepository,
+        IPasswordHashService passwordHashService)
     {
         _authService = authService;
         _userRepository = userRepository;
         _passwordHashService = passwordHashService;
-
     }
-    
+
     [HttpPost("login")]
     public async Task<IActionResult> login([FromBody] LoginForm form)
     {
-        Entity.User? user = await _userRepository.Get(form.email);
+        User? user = await _userRepository.Get(form.email);
         if (user == null)
-            return Unauthorized(new ErrorForm() {ErrorMessage = "User not found OR Password not found", ErrorCode = null});
+            return Unauthorized(new ErrorModel()
+                {ErrorMessage = "User not found OR Password not found", ErrorCode = null});
 
         bool compareHash = await _passwordHashService.ComparePassword(form.password, user.Password);
         if (!compareHash)
-            return Unauthorized(new ErrorForm() {ErrorMessage = "User not found OR Password not found"});
-        
+            return Unauthorized(new ErrorModel() {ErrorMessage = "User not found OR Password not found"});
+
         string key = await _authService.Login(user);
         await _userRepository.HasLoggedIn(user, DateTime.Now);
-        
+
         return Ok(new UserModel(user, key));
     }
 }

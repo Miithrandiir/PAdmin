@@ -9,5 +9,6 @@ public static class RegisterRepository
     public static void AddRepositoryToScoped(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IUserRepository, UserRepository>();
+        serviceCollection.AddScoped<IDomainRepository, DomainRepository>();
     }
 }

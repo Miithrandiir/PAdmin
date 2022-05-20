@@ -9,5 +9,7 @@ public static class RegisterServices
     {
         service.AddScoped<IAuthService, AuthService>();
         service.AddScoped<IPasswordHashService, PasswordHashService>();
+        service.AddScoped<IUserService, UserService>();
+        service.AddScoped<IDomainService, DomainService>();
     }
 }
