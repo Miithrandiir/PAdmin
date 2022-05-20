@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PAdmin.DbRepository.Context;
 
@@ -10,9 +11,10 @@ using PAdmin.DbRepository.Context;
 namespace PAdmin.DbRepository.Migrations
 {
     [DbContext(typeof(PAdminContext))]
-    partial class PAdminContextModelSnapshot : ModelSnapshot
+    [Migration("20220520090419_update user")]
+    partial class updateuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\PAdmin.Core\PAdmin.Core.csproj" />
       <ProjectReference Include="..\PAdmin.Entity\PAdmin.Entity.csproj" />
     </ItemGroup>
 

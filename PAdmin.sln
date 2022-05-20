@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAdmin.Business", "PAdmin.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAdmin.Core", "PAdmin.Core\PAdmin.Core.csproj", "{4425B2A1-B4EF-4725-ABC7-50FD3150F185}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAdmin.Test", "PAdmin.Test\PAdmin.Test.csproj", "{016CC311-EB7B-4D17-B518-6F98607EA601}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{4425B2A1-B4EF-4725-ABC7-50FD3150F185}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4425B2A1-B4EF-4725-ABC7-50FD3150F185}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4425B2A1-B4EF-4725-ABC7-50FD3150F185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{016CC311-EB7B-4D17-B518-6F98607EA601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{016CC311-EB7B-4D17-B518-6F98607EA601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{016CC311-EB7B-4D17-B518-6F98607EA601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{016CC311-EB7B-4D17-B518-6F98607EA601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
