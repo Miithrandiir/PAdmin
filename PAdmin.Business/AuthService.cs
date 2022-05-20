@@ -13,7 +13,7 @@ public class AuthService : IAuthService
 {
     private readonly IConfiguration _configuration;
 
-    public AuthService(IPasswordHashService passwordHash, IUserRepository userRepository, IConfiguration configuration)
+    public AuthService(IPasswordHashService passwordHash, IConfiguration configuration)
     {
         _configuration = configuration;
     }
