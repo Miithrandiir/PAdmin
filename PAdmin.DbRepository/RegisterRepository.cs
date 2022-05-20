@@ -11,5 +11,6 @@ public static class RegisterRepository
         serviceCollection.AddScoped<IUserRepository, UserRepository>();
         serviceCollection.AddScoped<IDomainRepository, DomainRepository>();
         serviceCollection.AddScoped<IMailboxRepository, MailboxRepository>();
+        serviceCollection.AddScoped<IAliasRepository, AliasRepository>();
     }
 }
