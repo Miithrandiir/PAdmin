@@ -27,11 +27,23 @@ public class MailboxRepository : IMailboxRepository
             .ToListAsync();
     }
 
-    public async Task<MailBox?> Update(MailBox mailBox)
+    public async Task<MailBox?> GetMailboxByNameAndDomain(string mailbox, int domainId)
+    {
+        return await _ctx.MailBoxes.FirstOrDefaultAsync(x => x.Name == mailbox && x.DomainId == domainId);
+    }
+
+    public async Task<MailBox> Update(MailBox mailBox)
     {
         _ctx.MailBoxes.Update(mailBox);
         await _ctx.SaveChangesAsync();
         return mailBox;
+    }
+
+    public async Task<MailBox> Insert(MailBox mailbox)
+    {
+        await _ctx.MailBoxes.AddAsync(mailbox);
+        await _ctx.SaveChangesAsync();
+        return mailbox;
     }
 
     public async Task Delete(int id)

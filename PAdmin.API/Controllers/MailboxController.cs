@@ -1,5 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PAdmin.API.Forms;
 using PAdmin.API.Models;
 using PAdmin.Core.Business;
 using PAdmin.Entity;
@@ -13,11 +15,13 @@ public class MailboxController : Controller
 {
     private readonly IUserService _userService;
     private readonly IMailboxService _mailboxService;
+    private readonly IDomainService _domainService;
     
-    public MailboxController(IUserService userService, IMailboxService mailboxService)
+    public MailboxController(IUserService userService, IMailboxService mailboxService, IDomainService domainService)
     {
         _userService = userService;
         _mailboxService = mailboxService;
+        _domainService = domainService;
     }
     
     [HttpGet]
@@ -47,5 +51,23 @@ public class MailboxController : Controller
 
         return Ok(new MailBoxModel(mailBox, Url));
 
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] [Required] MailboxForm form)
+    {
+        User? user = await _userService.GetUserAsync(User);
+        if (user == null)
+            return Unauthorized(new ErrorModel() {ErrorMessage = "User not found"});
+
+        if (await _mailboxService.IsTheMailboxAlreadyExists(form.Name, form.DomainId))
+            return Unauthorized(new ErrorModel() {ErrorMessage = "This mailboxes already exists"});
+        
+        if(await _mailboxService.Get(form.DomainId) == null)
+            return Unauthorized(new ErrorModel() {ErrorMessage = "Domain is not recognized"});
+
+        var mailbox = await _mailboxService.Create(new MailBox() {Name = form.Name, Quota = form.Quota, DomainId = form.DomainId});
+
+        return Ok(new MailBoxModel(mailbox, Url));
     }
 }

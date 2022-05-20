@@ -23,9 +23,19 @@ public class MailboxService : IMailboxService
         return await _mailboxRepository.SelectUserMailboxes(user);
     }
 
+    public async Task<bool> IsTheMailboxAlreadyExists(string mailbox, int domainId)
+    {
+        return (await _mailboxRepository.GetMailboxByNameAndDomain(mailbox, domainId)) != null;
+    }
+
     public async Task<MailBox?> Update(MailBox mailBox)
     {
         return await _mailboxRepository.Update(mailBox);
+    }
+
+    public async Task<MailBox> Create(MailBox mailbox)
+    {
+        return await _mailboxRepository.Insert(mailbox);
     }
 
     public async Task Remove(int id)
